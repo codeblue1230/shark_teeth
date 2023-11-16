@@ -1,2 +1,46 @@
-/* Base.html CSS */
+/* Base.html */
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+  }
+  
+.nav-link:hover {
+background-color: black;
+color: white;
+}
+
+/* Home.html */
+
+.home-img-container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.home-heading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.shark-bg {
+    filter: brightness(80%);
+    max-height: 600px;
+    width: 100%;
+}
+
+/* Media Queries */
+
+/* Base.html */
+
+@media screen and (max-width: 575px) {
+    .search-container {
+        padding-bottom: 10px;
+    }
+    .nav {
+        text-align: center;
+    }
+}
 
