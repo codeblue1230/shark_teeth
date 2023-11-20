@@ -1,34 +1,42 @@
 /* Base.html */
 
+body {
+    background-color: grey;
+}
+
 .nav-link {
     text-decoration: none;
     color: white;
-  }
+}
   
 .nav-link:hover {
-background-color: black;
-color: white;
+background-color: white;
+color: black;
+}
+
+#search-box {
+    background-color: grey;
+    color: white;
+}
+
+::placeholder {
+    color: white;
 }
 
 /* Home.html */
 
 .home-img-container {
-    position: relative;
-    text-align: center;
+    background: linear-gradient(90deg,
+    rgba(75, 41, 0, 0.5) 100%,
+    rgba(8, 209, 192, 0.616) 100%),
+    url('../images/shark_bg_2000.jpg') no-repeat center fixed;
+    background-size: cover;
+    height: 500px;
     color: white;
-}
-
-.home-heading {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.shark-bg {
-    filter: brightness(80%);
-    max-height: 600px;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Media Queries */
