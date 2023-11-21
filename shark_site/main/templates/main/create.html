@@ -6,7 +6,7 @@
     <div class="row">
         <h1 class="text-center pt-1">Forums</h1>
         <h2>Create Post</h2>
-        <form method="post" action="/create/" enctype="multipart/form-data">
+        <form method="POST" action="/create/" enctype="multipart/form-data">
             {% csrf_token %}
             {{form.title}}
             {{form.text}}

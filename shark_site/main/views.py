@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import request
 
 from .models import Post
 from .forms import CreateNewPost
@@ -12,7 +11,6 @@ def create(response):
         form = CreateNewPost(response.POST, response.FILES) # When including a file you must also add response.FILES as an argument
 
         if form.is_valid():
-            print(form.cleaned_data)
             p_title, p_text = form.cleaned_data["title"], form.cleaned_data["text"]
             p_img = form.cleaned_data["picture"]
             
@@ -26,7 +24,6 @@ def create(response):
 
 def forums(response):
     ls = Post.objects.all()
-    print()
     return render(response, "main/forums.html", {"ls": ls})
 
 
