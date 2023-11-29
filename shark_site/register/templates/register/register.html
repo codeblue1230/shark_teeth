@@ -2,9 +2,13 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container r_container">
 
-    <h1 class="text-center mt-4">Create An Account</h1>
+    <div class="d-flex flex-row justify-content-center align-items-center text-center">
+        <img class="r_shell" src="../../../main/static/images/shell_register.png" alt="sea shell">
+        <h1>Create An Account</h1>
+        <img class="r_shell" src="../../../main/static/images/shell_register.png" alt="sea shell">
+    </div>
 
     <div class="form_div d-flex flex-column align-items-center">
         <form method="POST" id="create_form">
@@ -22,7 +26,7 @@
                 {{ form.password2.label_tag }}<br>{{ form.password2 }}
             </div>
             <div class="d-flex flex-row justify-content-center mt-3 mb-5">
-                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="submit" id="create_button" class="btn btn-warning">Sign Up</button>
             </div>
         </form>
     </div>

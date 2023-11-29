@@ -1,0 +1,8 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<h1>{{ current_user }}</h1>
+<p>Member Since: {{ current_user.date_joined|date:"SHORT_DATE_FORMAT" }}</p>
+
+{% endblock %}

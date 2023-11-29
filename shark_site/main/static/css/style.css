@@ -2,6 +2,7 @@
 
 body {
     background-color: grey;
+    font-family: Arial, Helvetica, sans-serif
 }
 
 .nav-link {
@@ -56,17 +57,38 @@ color: black;
 
 /* Registration.html */
 
+.r_container {
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
+
 .register_form input {
     width: 100%;
-    height: 38px;
+    height: 40px;
     border: solid 3px black;
     margin-bottom: 10px;
     background-color: rgb(207, 207, 207);
 }
 
+.register_form input::placeholder {
+    color: rgb(77, 77, 77);
+}
+
 #create_form {
     width: 60%;
 } 
+
+#create_button {
+    width: 50%;
+    border-radius: 20px;
+    padding: 10px;
+    font-weight: bold;
+    min-width: 125px;
+}
+
+.r_shell {
+    height: 60px;
+}
 
 /* Media Queries */
 
@@ -81,3 +103,22 @@ color: black;
     }
 }
 
+/* Registration.html */
+
+@media screen and (max-width: 575px) {
+    #create_form {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    #create_form {
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1000px) {
+    #create_form {
+        width: 65%;
+    }
+}

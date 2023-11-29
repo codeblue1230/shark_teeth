@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 from .models import Post
 from .forms import CreateNewPost
@@ -31,3 +33,8 @@ def forums(response):
     # for p in all_posts:
     #     print(p.title)
     #     print(p.text)
+
+@login_required(login_url="/")
+def profile(response):
+    current_user = response.user
+    return render(response, "main/profile.html", {"current_user": current_user})
