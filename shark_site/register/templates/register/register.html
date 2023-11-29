@@ -2,12 +2,31 @@
 
 {% block content %}
 
-<h1>Create An Account</h1>
+<div class="container">
 
-<form method="POST">
-    {% csrf_token %}
-    {{form}}
-    <button type="submit" class="btn btn-primary">Register</button>
-</form>
+    <h1 class="text-center mt-4">Create An Account</h1>
+
+    <div class="form_div d-flex flex-column align-items-center">
+        <form method="POST" id="create_form">
+            {% csrf_token %}
+            <div class="register_form">
+                {{ form.username.label_tag }}<br>{{ form.username }}
+            </div>
+            <div class="register_form">
+                {{ form.email.label_tag }}<br>{{ form.email }}
+            </div>
+            <div class="register_form">
+                {{ form.password1.label_tag }}<br>{{ form.password1 }}
+            </div>
+            <div class="register_form">
+                {{ form.password2.label_tag }}<br>{{ form.password2 }}
+            </div>
+            <div class="d-flex flex-row justify-content-center mt-3 mb-5">
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+        </form>
+    </div>
+
+</div>
 
 {% endblock %}

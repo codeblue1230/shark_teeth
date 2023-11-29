@@ -10,7 +10,7 @@ def register(response):
             user = form.save(commit=False)  # Get the unsaved user instance
             user.date_joined = timezone.now()  # Set the date_joined field of the user
             user.save()  # Save the user instance with the updated date_joined
-        return redirect("/")
+        return redirect("/login/")
 
     else:
         form = RegisterForm()

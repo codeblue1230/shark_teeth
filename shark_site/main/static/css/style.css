@@ -54,7 +54,19 @@ color: black;
     border-radius: 10px;
 }
 
+/* Registration.html */
 
+.register_form input {
+    width: 100%;
+    height: 38px;
+    border: solid 3px black;
+    margin-bottom: 10px;
+    background-color: rgb(207, 207, 207);
+}
+
+#create_form {
+    width: 60%;
+} 
 
 /* Media Queries */
 
