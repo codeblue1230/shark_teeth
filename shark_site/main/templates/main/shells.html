@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="text-center mt-3">{{ s.name }}</h1>
+        {% for s in shell_posts %}
+            <div class="row teeth_post">
+                <div class="col-lg-3 pb-2 thumbnail">
+                    <h3>{{ s.title }}</h3>
+                    {% if s.picture != '' %}
+                        <img src="../../../{{ s.picture }}" class="teeth_pics" alt="user uploaded picture">
+                    {% else %}
+                        <img src="../../static/images/shell_default.jpg" class="teeth_pics" alt="default picture of shark">
+                    {% endif %}
+                </div>
+                <div class="describe col-lg-9">
+                    <p>{{ s.text }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

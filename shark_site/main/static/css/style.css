@@ -40,7 +40,18 @@ color: black;
     align-items: center;
 }
 
-/* Forums.html */
+/* Forum.html */
+
+.f_container a {
+    color: black;
+    text-decoration: none;
+}
+
+.f_container a:hover {
+    color: yellow;
+}
+
+/* Teeth.html/Shells.html */
 
 .teeth_post {
     border: solid 4px black;

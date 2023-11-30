@@ -2,24 +2,16 @@
 
 {% block content %} 
 
-<div class="container">
-    <h1 class="text-center mt-3">Forums</h1>
-        {% for p in ls %}
-            <div class="row teeth_post">
-                <div class="col-lg-3 pb-2 thumbnail">
-                    <h3>{{ p.title }}</h3>
-                    {% if p.picture != '' %}
-                        <img src="../../../{{ p.picture }}" class="teeth_pics" alt="user uploaded picture">
-                    {% else %}
-                        <img src="../../static/images/default_shark.jpg" class="teeth_pics" alt="default picture of shark">
-                    {% endif %}
-                </div>
-                <div class="describe col-lg-9">
-                    <p>{{ p.text }}</p>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
+<div class="container f_container text-center">
+
+    <h1>Main Forum</h1>
+
+    <h3><a href="/teeth/">Shark Teeth</a></h3>
+    <h3><a href="/shells/">Sea Shells</a></h3>
+    {% if user.is_authenticated %}
+    <p><a href="/create/">Create a New Post</a></p>
+    {% endif %}
+
 </div>
 
 {% endblock %}

@@ -7,4 +7,6 @@ urlpatterns = [
     path("forums/", views.forums, name="forums"),
     path("create/", views.create, name="create"),
     path("profile/", views.profile, name="profile"),
+    path("shells/", views.shells, name="shells"),
+    path("teeth/", views.teeth, name="teeth"),
 ]
