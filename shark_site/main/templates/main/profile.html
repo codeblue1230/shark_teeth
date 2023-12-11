@@ -5,4 +5,20 @@
 <h1>{{ current_user }}</h1>
 <p>Member Since: {{ current_user.date_joined|date:"SHORT_DATE_FORMAT" }}</p>
 
+<h1>View Posts From {{ current_user }}</h1>
+
+{% for p in user_posts %}
+
+    <h3>{{ p.title }}</h3>
+
+    {% if p.picture != '' %}
+        <img src="../../../{{ p.picture }}" class="teeth_pics" alt="user uploaded picture">
+    {% elif p.forum.id == 1 %}
+        <img src="../../static/images/default_shark.jpg" class="teeth_pics" alt="user uploaded picture">
+    {% elif p.forum.id == 2 %}
+        <img src="../../static/images/shell_default.jpg" class="teeth_pics" alt="user uploaded picture">
+    {% endif %}
+
+{% endfor %}
+
 {% endblock %}

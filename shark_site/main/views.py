@@ -22,9 +22,9 @@ def create(response):
             print(p_choice)
 
             if p_choice == 1:
-                p = Post(title=p_title, text=p_text, picture=p_img, forum=Forum.objects.get(id=1))
+                p = Post(user=response.user, title=p_title, text=p_text, picture=p_img, forum=Forum.objects.get(id=1))
             elif p_choice == 2:
-                p = Post(title=p_title, text=p_text, picture=p_img, forum=Forum.objects.get(id=2))
+                p = Post(user=response.user, title=p_title, text=p_text, picture=p_img, forum=Forum.objects.get(id=2))
 
             p.save()
 
@@ -39,17 +39,17 @@ def forums(response):
 
 
 def teeth(response):
-    t = Forum.objects.get(id=1) # In database the teeth forum has an id of 1
-    s_posts = t.posts.all() # posts is the relate_name keyword argument from the Post Model Foreign Key
+    t = Forum.objects.get(id=1) # Teeth Forum id=1
+    s_posts = t.posts.all() # posts is the name given to the Foreign Key connecting to the Forum Model (aka related_name)
     # s_posts gets posts from the teeth instance
 
     return render(response, "main/teeth.html", {"t": t, "s_posts": s_posts})
 
 
 def shells(response):
-    s = Forum.objects.get(id=2) # In database the shell forum has an id of 2
-    shell_posts = s.posts.all() # posts is the relate_name keyword argument from the Post Model Foreign Key
-    # shell_posts gets posts from the teeth instance
+    s = Forum.objects.get(id=2) # Shell Forum id=2
+    shell_posts = s.posts.all() # posts is the name given to the Foreign Key connecting to the Forum Model (aka related_name)
+    # shell_posts gets posts from the shell instance
 
     return render(response, "main/shells.html", {"s": s, "shell_posts": shell_posts})
 
@@ -57,4 +57,6 @@ def shells(response):
 @login_required(login_url="/")
 def profile(response):
     current_user = response.user
-    return render(response, "main/profile.html", {"current_user": current_user})
+    user_posts = Post.objects.filter(user=current_user.id) 
+    # Use filter when querying if you expect multiple results or no results, and get for 1 result
+    return render(response, "main/profile.html", {"current_user": current_user, "user_posts": user_posts})
