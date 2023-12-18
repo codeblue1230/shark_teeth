@@ -66,6 +66,15 @@ color: black;
     border-radius: 10px;
 }
 
+.author_links {
+    text-decoration: none;
+    color: black;
+}
+
+.author_links:hover {
+    color: yellow;
+}
+
 /* Registration.html */
 
 .r_container {

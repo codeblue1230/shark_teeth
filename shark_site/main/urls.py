@@ -9,4 +9,5 @@ urlpatterns = [
     path("profile/", views.profile, name="profile"),
     path("shells/", views.shells, name="shells"),
     path("teeth/", views.teeth, name="teeth"),
+    path("profile/<int:id>", views.any_profile, name="any_profile")
 ]

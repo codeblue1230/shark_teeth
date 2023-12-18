@@ -13,7 +13,7 @@
                     {% else %}
                         <img src="../../static/images/default_shark.jpg" class="teeth_pics mb-1" alt="default picture of shark">
                     {% endif %}
-                    <p class="mb-1">Author: {{ p.user }}</p>
+                    <p class="mb-1">Author: <a class="author_links" href="{% url 'any_profile' p.user.id %}">{{ p.user }}</a></p>
                     <p class="mb-1">Created: {{ p.date_created|date:"SHORT_DATE_FORMAT" }}</p>
                 </div>
                 <div class="describe col-lg-9">

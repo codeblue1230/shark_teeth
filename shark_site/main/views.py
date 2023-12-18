@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
@@ -56,6 +56,7 @@ def shells(response):
 
 @login_required(login_url="/")
 def profile(response):
+    print(response.user.id)
     current_user = response.user
     user_posts = Post.objects.filter(user=current_user.id).order_by("-date_created", "-id")
     """
@@ -65,4 +66,17 @@ def profile(response):
     WHERE user_id = <logged_in_user>
     ORDER BY date_created DESC, id DESC;
     """
+
     return render(response, "main/profile.html", {"current_user": current_user, "user_posts": user_posts})
+
+def any_profile(response, id):
+    user = User.objects.get(id=id)
+    if response.user.id == user.id:
+        return redirect("profile")
+    """
+    If the logged in user matches the id argument we can route the user back to their own profile page,
+    otherwise we route the user to a different user's profile page with the code below
+    """
+    user_posts = Post.objects.filter(user=user.id).order_by("-date_created", "-id")
+
+    return render(response, "main/any_profile.html", {"user": user, "user_posts": user_posts})

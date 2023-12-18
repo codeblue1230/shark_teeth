@@ -2,10 +2,11 @@
 
 {% block content %}
 
-<h1>{{ current_user }}</h1>
-<p>Member Since: {{ current_user.date_joined|date:"SHORT_DATE_FORMAT" }}</p>
+<h1>{{ user.username }}</h1>
 
-<h1>View Your Posts</h1>
+<p>Member Since: {{ user.date_joined|date:"SHORT_DATE_FORMAT" }}</p>
+
+<h1>View Posts Created by {{ user.username }}</h1>
 
 {% for p in user_posts %}
 
