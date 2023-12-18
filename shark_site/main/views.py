@@ -40,7 +40,7 @@ def forums(response):
 
 def teeth(response):
     t = Forum.objects.get(id=1) # Teeth Forum id=1
-    s_posts = t.posts.all() # posts is the name given to the Foreign Key connecting to the Forum Model (aka related_name)
+    s_posts = t.posts.all().order_by("-date_created", "-id") # posts is the name given to the Foreign Key connecting to the Forum Model (aka related_name)
     # s_posts gets posts from the teeth instance
 
     return render(response, "main/teeth.html", {"t": t, "s_posts": s_posts})
@@ -48,7 +48,7 @@ def teeth(response):
 
 def shells(response):
     s = Forum.objects.get(id=2) # Shell Forum id=2
-    shell_posts = s.posts.all() # posts is the name given to the Foreign Key connecting to the Forum Model (aka related_name)
+    shell_posts = s.posts.all().order_by("-date_created", "-id") # posts is the name given to the Foreign Key connecting to the Forum Model (aka related_name)
     # shell_posts gets posts from the shell instance
 
     return render(response, "main/shells.html", {"s": s, "shell_posts": shell_posts})
@@ -57,6 +57,12 @@ def shells(response):
 @login_required(login_url="/")
 def profile(response):
     current_user = response.user
-    user_posts = Post.objects.filter(user=current_user.id) 
-    # Use filter when querying if you expect multiple results or no results, and get for 1 result
+    user_posts = Post.objects.filter(user=current_user.id).order_by("-date_created", "-id")
+    """
+    user_posts is equal to the query below:
+    SELECT * 
+    FROM myApp_post
+    WHERE user_id = <logged_in_user>
+    ORDER BY date_created DESC, id DESC;
+    """
     return render(response, "main/profile.html", {"current_user": current_user, "user_posts": user_posts})

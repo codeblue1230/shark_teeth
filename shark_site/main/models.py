@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 class Forum(models.Model):
     name = models.CharField(max_length=100)
@@ -10,3 +11,4 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     text = models.CharField(max_length=1000)
     picture = models.ImageField(upload_to=('files/teeth_images'))
+    date_created = models.DateField(default=timezone.now)

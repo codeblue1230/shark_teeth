@@ -19,6 +19,8 @@
         <img src="../../static/images/shell_default.jpg" class="teeth_pics" alt="user uploaded picture">
     {% endif %}
 
+    <p>Created: {{ p.date_created|date:"SHORT_DATE_FORMAT" }}</p>
+
 {% endfor %}
 
 {% endblock %}

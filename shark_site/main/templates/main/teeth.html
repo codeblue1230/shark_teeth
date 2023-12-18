@@ -9,11 +9,12 @@
                 <div class="col-lg-3 pb-2 thumbnail">
                     <h3>{{ p.title }}</h3>
                     {% if p.picture != '' %}
-                        <img src="../../../{{ p.picture }}" class="teeth_pics" alt="user uploaded picture">
+                        <img src="../../../{{ p.picture }}" class="teeth_pics mb-1" alt="user uploaded picture">
                     {% else %}
-                        <img src="../../static/images/default_shark.jpg" class="teeth_pics" alt="default picture of shark">
+                        <img src="../../static/images/default_shark.jpg" class="teeth_pics mb-1" alt="default picture of shark">
                     {% endif %}
-                    <p>{{ p.user }}</p>
+                    <p class="mb-1">Author: {{ p.user }}</p>
+                    <p class="mb-1">Created: {{ p.date_created|date:"SHORT_DATE_FORMAT" }}</p>
                 </div>
                 <div class="describe col-lg-9">
                     <p>{{ p.text }}</p>
