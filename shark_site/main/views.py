@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 from .models import Post, Forum
 from .forms import CreateNewPost
@@ -43,7 +44,11 @@ def teeth(response):
     s_posts = t.posts.all().order_by("-date_created", "-id") # posts is the name given to the Foreign Key connecting to the Forum Model (aka related_name)
     # s_posts gets posts from the teeth instance
 
-    return render(response, "main/teeth.html", {"t": t, "s_posts": s_posts})
+    paginator = Paginator(s_posts, 5) # Show 10 posts per page
+    page_number = response.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    return render(response, "main/teeth.html", {"t": t, "page_obj": page_obj})
 
 
 def shells(response):

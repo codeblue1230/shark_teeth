@@ -75,6 +75,20 @@ color: black;
     color: yellow;
 }
 
+.page_links > a {
+    text-decoration: none;
+    color: black;
+}
+
+.page_links > a:hover {
+    color: yellow;
+}
+
+.page_links > a > button:hover {
+    color: white;
+    background-color: black;
+}
+
 /* Registration.html */
 
 .r_container {
