@@ -44,7 +44,7 @@ def teeth(response):
     s_posts = t.posts.all().order_by("-date_created", "-id") # posts is the name given to the Foreign Key connecting to the Forum Model (aka related_name)
     # s_posts gets posts from the teeth instance
 
-    paginator = Paginator(s_posts, 5) # Show 10 posts per page
+    paginator = Paginator(s_posts, 5) # Show 5 posts per page
     page_number = response.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
@@ -56,12 +56,15 @@ def shells(response):
     shell_posts = s.posts.all().order_by("-date_created", "-id") # posts is the name given to the Foreign Key connecting to the Forum Model (aka related_name)
     # shell_posts gets posts from the shell instance
 
-    return render(response, "main/shells.html", {"s": s, "shell_posts": shell_posts})
+    paginator = Paginator(shell_posts, 5) # Show 5 posts per page
+    page_number = response.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    return render(response, "main/shells.html", {"s": s, "page_obj": page_obj})
 
 
 @login_required(login_url="/")
 def profile(response):
-    print(response.user.id)
     current_user = response.user
     user_posts = Post.objects.filter(user=current_user.id).order_by("-date_created", "-id")
     """
