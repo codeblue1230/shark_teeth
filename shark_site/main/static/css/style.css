@@ -24,6 +24,30 @@ color: black;
     color: white;
 }
 
+/* Multi page Links (appear on profile, teeth, shells, etc.. */
+
+.page_links > a {
+    text-decoration: none;
+    color: black;
+}
+
+.page_links > a:hover {
+    color: yellow;
+}
+
+.page_links > a > button:hover {
+    color: white;
+    background-color: black;
+}
+
+.p_title_link {
+    color: black;    
+}
+
+.p_title_link:hover {
+    color: yellow;    
+}
+
 /* Home.html */
 
 .home-img-container {
@@ -75,20 +99,6 @@ color: black;
     color: yellow;
 }
 
-.page_links > a {
-    text-decoration: none;
-    color: black;
-}
-
-.page_links > a:hover {
-    color: yellow;
-}
-
-.page_links > a > button:hover {
-    color: white;
-    background-color: black;
-}
-
 /* Registration.html */
 
 .r_container {
@@ -122,6 +132,31 @@ color: black;
 
 .r_shell {
     height: 60px;
+}
+
+/* A_post.html */
+
+#post_pic {
+    height: 300px;
+    width: auto;
+    max-width: 100%;
+    border: solid 2px black;
+    border-radius: 10px;
+}
+
+#p_profile_link, #p_reply_link {
+    text-decoration: none;
+    color: black;
+}
+
+#p_profile_link:hover, #p_reply_link:hover {
+    color: yellow;
+}
+
+#p_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 /* Media Queries */

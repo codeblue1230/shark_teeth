@@ -9,7 +9,7 @@
 
 {% for p in page_obj %}
 
-    <h3>{{ p.title }}</h3>
+    <h3><a class="p_title_link" href="{% url 'a_post' p.id%}">{{ p.title }}</a></h3>
 
     {% if p.picture != '' %}
         <img src="../../../{{ p.picture }}" class="teeth_pics" alt="user uploaded picture">

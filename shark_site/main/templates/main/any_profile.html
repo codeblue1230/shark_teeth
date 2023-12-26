@@ -2,15 +2,15 @@
 
 {% block content %}
 
-<h1>{{ user.username }}</h1>
+<h1>{{ any_user.username }}</h1>
 
-<p>Member Since: {{ user.date_joined|date:"SHORT_DATE_FORMAT" }}</p>
+<p>Member Since: {{ any_user.date_joined|date:"SHORT_DATE_FORMAT" }}</p>
 
-<h1>View Posts Created by {{ user.username }}</h1>
+<h1>View Posts Created by {{ any_user.username }}</h1>
 
 {% for p in page_obj %}
 
-    <h3>{{ p.title }}</h3>
+    <h3><a class="p_title_link" href="{% url 'a_post' p.id%}">{{ p.title }}</a></h3>
 
     {% if p.picture != '' %}
         <img src="../../../{{ p.picture }}" class="teeth_pics" alt="user uploaded picture">

@@ -12,3 +12,10 @@ class Post(models.Model):
     text = models.CharField(max_length=1000)
     picture = models.ImageField(upload_to=('files/teeth_images'))
     date_created = models.DateField(default=timezone.now)
+
+class Reply(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    f_post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    text = models.CharField(max_length=500)
+    date_created = models.DateField()
+    

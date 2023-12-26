@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    <div id="p_header">
+        <h1>{{ p.title }}</h1>
+        <h4><a id="p_reply_link" href="#">Reply</a></h4>
+    </div>
+
+    <div>
+        <p>Posted by: <a id="p_profile_link" href="{% url 'any_profile' p.user.id %}">{{ p.user }}</a></p>
+        <p>{{ p.date_created }}</p>
+        <p>{{ p.text }}</p>
+        {% if p.picture != '' %}
+        <img id="post_pic" src="../../../{{ p.picture }}" alt="">
+        {% endif %}
+    </div>
+
+</div>
+
+{% endblock %}
