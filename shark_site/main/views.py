@@ -75,16 +75,24 @@ def profile(response):
     ORDER BY date_created DESC, id DESC;
     """
 
-    return render(response, "main/profile.html", {"current_user": current_user, "user_posts": user_posts})
+    paginator = Paginator(user_posts, 5) # Turn above query into pages with 5 posts per page
+    page_number = response.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    return render(response, "main/profile.html", {"current_user": current_user, "page_obj": page_obj})
 
 def any_profile(response, id):
     user = User.objects.get(id=id)
     if response.user.id == user.id:
         return redirect("profile")
     """
-    If the logged in user matches the id argument we can route the user back to their own profile page,
+    If the logged in user matches the id argument we can route the user back to their own profile page (if statement above),
     otherwise we route the user to a different user's profile page with the code below
     """
     user_posts = Post.objects.filter(user=user.id).order_by("-date_created", "-id")
 
-    return render(response, "main/any_profile.html", {"user": user, "user_posts": user_posts})
+    paginator = Paginator(user_posts, 5) # Turn above query into pages with 5 posts per page
+    page_number = response.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    return render(response, "main/any_profile.html", {"user": user, "page_obj": page_obj})

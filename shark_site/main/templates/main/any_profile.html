@@ -8,7 +8,7 @@
 
 <h1>View Posts Created by {{ user.username }}</h1>
 
-{% for p in user_posts %}
+{% for p in page_obj %}
 
     <h3>{{ p.title }}</h3>
 
@@ -23,5 +23,32 @@
     <p>Created: {{ p.date_created|date:"SHORT_DATE_FORMAT" }}</p>
 
 {% endfor %}
+
+<div class="mt-3">
+    <span class="page_links">
+        {% if page_obj.has_previous %} <!-- If the current page is not the first page -->
+            <a href="?page=1">&laquo;First</a> <!-- Link to first page -->
+            <a href="?page={{ page_obj.previous_page_number }}">
+                <button>&lt Previous</button> <!-- Link to page before current page -->
+            </a>
+        {% endif %}
+
+        <span>
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+            {% comment %} 
+                This span displays current page number and total number of pages
+                Example: Page 1 of 2
+                Note: This element appears no matter what number page you are on    
+            {% endcomment %}
+        </span>
+
+        {% if page_obj.has_next %} <!-- If current page is not the last page -->
+            <a href="?page={{ page_obj.next_page_number }}">
+                <button>Next ></button>
+            </a> <!-- Link to the page after current page -->
+            <a href="?page={{ page_obj.paginator.num_pages }}">Last&raquo;</a> <!-- Link to final page -->
+        {% endif %}
+    </span>
+</div>
 
 {% endblock %}
