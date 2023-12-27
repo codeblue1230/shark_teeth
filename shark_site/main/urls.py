@@ -11,4 +11,5 @@ urlpatterns = [
     path("shells/", views.shells, name="shells"),
     path("teeth/", views.teeth, name="teeth"),
     path("post/<int:id>", views.a_post, name="a_post"),
+    path("reply/<int:post_id>", views.reply, name="reply"),
 ]

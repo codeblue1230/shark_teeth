@@ -1,0 +1,17 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    <form method="POST" action="/reply/{{ post_id }}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" name="reply" class="btn btn-primary">Create Reply</button>
+    </form>
+
+</div>
+
+
+
+{% endblock %}

@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 
-from .models import Post, Forum
-from .forms import CreateNewPost
+from .models import Post, Forum, Reply
+from .forms import CreateNewPost, CreateNewReply
 
 
 def home(response):
@@ -20,7 +20,6 @@ def create(response):
             p_title, p_text = form.cleaned_data["title"], form.cleaned_data["text"]
             p_img, p_choice = form.cleaned_data["picture"], int(form.cleaned_data["s_or_t"][0])
             # Queryset comes out as a list so you must get the index and turn it to an integer
-            print(p_choice)
 
             if p_choice == 1:
                 p = Post(user=response.user, title=p_title, text=p_text, picture=p_img, forum=Forum.objects.get(id=1))
@@ -99,6 +98,28 @@ def any_profile(response, id):
 
     return render(response, "main/any_profile.html", {"any_user": any_user, "page_obj": page_obj})
 
+# View a post from the forum
 def a_post(response, id):
     p = Post.objects.get(id=id)
-    return render(response, 'main/a_post.html', {"p": p})
+    replies = Reply.objects.filter(f_post=p).order_by("date_created", "id")
+
+    return render(response, 'main/a_post.html', {"p": p, "replies": replies})
+
+# Link to reply to a post
+@login_required(login_url="/")
+def reply(response, post_id):
+    if response.method == 'POST':
+        form = CreateNewReply(response.POST)
+
+        if form.is_valid():
+            r_text, main_post = form.cleaned_data["text"], Post.objects.get(id=post_id)
+            
+            r = Reply(user=response.user, f_post=main_post, text=r_text)
+            r.save()
+
+            return redirect("a_post", id=post_id)
+
+    else:
+        form = CreateNewReply()
+
+    return render(response, 'main/reply.html', {"post_id": post_id, "form": form})

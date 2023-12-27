@@ -159,6 +159,11 @@ color: black;
     justify-content: space-between;
 }
 
+.p_reply {
+    border: solid black 2px;
+    margin-bottom: 20px;
+}
+
 /* Media Queries */
 
 /* Base.html */
