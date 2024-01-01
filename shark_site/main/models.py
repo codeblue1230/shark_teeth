@@ -6,6 +6,10 @@ class Forum(models.Model):
     name = models.CharField(max_length=100)
 
 class Post(models.Model):
+    """
+    Represents a Post in a Forum
+    """
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     forum = models.ForeignKey(Forum, on_delete=models.CASCADE, related_name='posts')
     title = models.CharField(max_length=100)
@@ -14,6 +18,10 @@ class Post(models.Model):
     date_created = models.DateField(default=timezone.now)
 
 class Reply(models.Model):
+    """
+    Represents a Reply to A Post
+    """
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     f_post = models.ForeignKey(Post, on_delete=models.CASCADE)
     text = models.CharField(max_length=500)

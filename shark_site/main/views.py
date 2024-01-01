@@ -103,7 +103,12 @@ def a_post(response, id):
     p = Post.objects.get(id=id)
     replies = Reply.objects.filter(f_post=p).order_by("date_created", "id")
 
-    return render(response, 'main/a_post.html', {"p": p, "replies": replies})
+    paginator = Paginator(replies, 5)
+    page_number = response.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+
+    return render(response, 'main/a_post.html', {"p": p, "replies": replies, "page_obj": page_obj})
 
 # Link to reply to a post
 @login_required(login_url="/")

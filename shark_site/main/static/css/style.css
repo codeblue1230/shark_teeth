@@ -144,12 +144,12 @@ color: black;
     border-radius: 10px;
 }
 
-#p_profile_link, #p_reply_link {
+.p_profile_link, #p_reply_link {
     text-decoration: none;
     color: black;
 }
 
-#p_profile_link:hover, #p_reply_link:hover {
+.p_profile_link:hover, #p_reply_link:hover {
     color: yellow;
 }
 
@@ -162,6 +162,7 @@ color: black;
 .p_reply {
     border: solid black 2px;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 /* Media Queries */
